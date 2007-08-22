@@ -1,27 +1,30 @@
 %define name	ltrace
-%define version	0.5
-
-%define svn		45svn
-%define release	%mkrel 1.%svn
+%define version	0.6
+%define svn	77
+%if %svn
+%define release	%mkrel 0.%svn.1
+%else
+%define release	%mkrel 1
+%endif
 
 Summary:	Track runtime library calls from dynamically linked executables
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Url:		ftp://ftp.debian.org/debian/pool/main/l/ltrace/
-# Taken from fedora:
-Source0:	ltrace-%{version}.tar.bz2
-# fedora patches:
-Patch2: ltrace-opd.patch
-Patch3: ltrace-ppc32fc5.patch
-Patch4: ltrace-0.5-gnuhash.patch
-Patch5: ltrace-0.5-testsuite.patch
-# debian patch:
-Patch100:		ftp://ftp.debian.org/debian/pool/main/l/ltrace/ltrace_0.4-1.diff.gz
-License:	GPL
+URL:		http://svn.debian.org/wsvn/ltrace
+# check out svn://svn.debian.org/ltrace/ltrace/trunk and compress
+Source0:	ltrace-%{svn}.tar.bz2
+# fedora patch:
+Patch5:		ltrace-0.5-testsuite.patch
+# debian patch, stripped of debian-specific stuff:
+Patch100:	ltrace_0.4-2.diff
+License:	GPLv2+
 Group:		Development/Other
 ExclusiveArch:	%{ix86} x86_64 ppc x86_64 sparc alpha
 BuildRequires:	elfutils-devel
+%if %svn
+BuildRequires:	autoconf
+%endif
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -35,16 +38,20 @@ You should install ltrace if you need a sysadmin tool for tracking the
 execution of processes.
 
 %prep
+%if %svn
+%setup -q -n %{name}
+%else
 %setup -q
+%endif
 
-%patch2 -p1
-%patch3 -p0
-%patch4 -p1
 %patch5 -p1
 
 %patch100 -p1
 
 %build
+%if %svn
+./autogen.sh
+%endif
 %configure
 %make
 
@@ -60,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc debian/changelog COPYING README TODO BUGS
+%doc README TODO BUGS
 %{_bindir}/ltrace
 %{_mandir}/man1/ltrace.1*
 %config(noreplace) %{_sysconfdir}/ltrace.conf
