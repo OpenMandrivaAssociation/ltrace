@@ -25,6 +25,7 @@ BuildRequires:	elfutils-devel
 %if %svn
 BuildRequires:	autoconf
 %endif
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Ltrace is a debugging program which runs a specified command until the
