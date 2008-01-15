@@ -4,7 +4,7 @@
 %if %svn
 %define release	%mkrel 0.%svn.1
 %else
-%define release	%mkrel 2
+%define release	%mkrel 3
 %endif
 
 Summary:	Track runtime library calls from dynamically linked executables
