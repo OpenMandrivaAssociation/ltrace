@@ -1,6 +1,6 @@
 %define svn 81
 %if %svn
-%define release %mkrel 0.%svn.2
+%define release %mkrel 0.%svn.3
 %else
 %define release %mkrel 1
 %endif
