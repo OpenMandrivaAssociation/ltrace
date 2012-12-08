@@ -1,8 +1,8 @@
 %define svn 81
 %if %svn
-%define release %mkrel 0.%svn.6
+%define release %mkrel 0.%svn.8
 %else
-%define release %mkrel 4
+%define release %mkrel 6
 %endif
 
 Summary:	Track runtime library calls from dynamically linked executables
@@ -69,3 +69,77 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/ltrace.conf
 %{_bindir}/ltrace
 %{_mandir}/man1/ltrace.1*
+
+
+%changelog
+* Wed May 04 2011 Oden Eriksson <oeriksson@mandriva.com> 0.6-0.81.6mdv2011.0
++ Revision: 666102
+- mass rebuild
+
+* Fri Dec 03 2010 Oden Eriksson <oeriksson@mandriva.com> 0.6-0.81.5mdv2011.0
++ Revision: 606425
+- rebuild
+
+* Mon Mar 15 2010 Oden Eriksson <oeriksson@mandriva.com> 0.6-0.81.4mdv2010.1
++ Revision: 520148
+- rebuilt for 2010.1
+
+* Wed Sep 02 2009 Christophe Fergeau <cfergeau@mandriva.com> 0.6-0.81.3mdv2010.0
++ Revision: 426014
+- rebuild
+
+* Sat Mar 07 2009 Antoine Ginies <aginies@mandriva.com> 0.6-0.81.2mdv2009.1
++ Revision: 351543
+- rebuild
+
+* Fri Aug 01 2008 Oden Eriksson <oeriksson@mandriva.com> 0.6-0.81.1mdv2009.0
++ Revision: 259366
+- new svn snap (r81)
+- drop P100, it's in there
+- fix build
+
+* Mon Jun 16 2008 Thierry Vignaud <tv@mandriva.org> 0.6-0.77.1mdv2009.0
++ Revision: 219562
+- rebuild
+- rebuild
+- rebuild
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - rebuild
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Wed Aug 22 2007 Adam Williamson <awilliamson@mandriva.org> 0.6-0.77.1mdv2008.0
++ Revision: 68826
+- rebuild for 2008
+- don't package debian changelog and license
+- strip debian patch of debian-specific stuff
+- drop patches 2, 3 and 4 (merged or equivalent merged upstream)
+- update URLs
+- use Fedora license policy
+- update to latest SVN rev 77
+- correct versioning
+- spec clean
+
+
+* Fri Aug 18 2006 Thierry Vignaud <tvignaud@mandriva.com> 0.5-1.45svnmdv2007.0
+- new release
+- added fedorad patches
+- updated debian (useless for now)
+
+* Fri Aug 18 2006 Thierry Vignaud <tvignaud@mandriva.com> 0.4-1mdv2007.0
+- new release (#24430)
+- kill patch 2: merged upstream
+
+* Sun Jan 01 2006 Mandriva Linux Team <http://www.mandrivaexpert.com/> 0.3.36-3mdk
+- Rebuild
+
+* Thu Jan 13 2005 Per Øyvind Karlsen <peroyvind@linux-mandrake.com> 0.3.36-2mdk
+- fix buildrequires
+
+* Thu Jan 13 2005 Per Øyvind Karlsen <peroyvind@linux-mandrake.com> 0.3.36-1mdk
+- 0.3.36 (sync with fedora)
+- build on alpha & sparc too
+
