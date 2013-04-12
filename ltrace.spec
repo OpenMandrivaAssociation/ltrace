@@ -1,19 +1,15 @@
-%define svn 81
-%if %svn
-%define release %mkrel 0.%svn.8
-%else
-%define release %mkrel 6
-%endif
+%define snapshot 1
+%define git d66c8b1
 
 Summary:	Track runtime library calls from dynamically linked executables
 Name:		ltrace
-Version:	0.6
-Release:	%{release}
+Version:	0.7.2
+Release:	1
 License:	GPLv2+
 Group:		Development/Other
-URL:		http://svn.debian.org/wsvn/ltrace
-# check out svn://svn.debian.org/ltrace/ltrace/trunk and compress
-Source0:	ltrace-%{svn}.tar.bz2
+URL:		http://ltrace.alioth.debian.org/
+# snapshot from http://anonscm.debian.org/gitweb/?p=collab-maint/ltrace.git
+Source0:	ltrace-%{git}.tar.gz
 # fedora patch:
 Patch5:		ltrace-0.5-testsuite.patch
 ExclusiveArch:	%{ix86} x86_64 ppc x86_64 sparc alpha
@@ -35,17 +31,17 @@ execution of processes.
 
 %prep
 
-%if %svn
+%if %snapshot
 %setup -q -n %{name}
 %else
 %setup -q
 %endif
 
-%patch5 -p1
+#%patch5 -p1
 
 %build
 export CFLAGS="%{optflags} -D_GNU_SOURCE=1"
-%if %svn
+%if %snapshot
 ./autogen.sh
 %endif
 %configure
