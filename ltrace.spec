@@ -67,6 +67,7 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/ltrace.conf
 %{_bindir}/ltrace
 %{_mandir}/man1/ltrace.1*
+%{_mandir}/man5/ltrace.conf.5*
 
 
 %changelog
