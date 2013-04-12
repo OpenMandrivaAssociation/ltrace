@@ -32,7 +32,7 @@ execution of processes.
 %prep
 
 %if %snapshot
-%setup -q -n %{name}
+%setup -q -n %{name}-%{git}
 %else
 %setup -q
 %endif
@@ -40,7 +40,6 @@ execution of processes.
 #%patch5 -p1
 
 %build
-export CFLAGS="%{optflags} -D_GNU_SOURCE=1"
 %if %snapshot
 ./autogen.sh
 %endif
