@@ -60,7 +60,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc README TODO BUGS
+%doc README TODO
 %config(noreplace) %{_sysconfdir}/ltrace.conf
 %{_bindir}/ltrace
 %{_mandir}/man1/ltrace.1*
