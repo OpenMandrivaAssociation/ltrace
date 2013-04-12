@@ -40,6 +40,9 @@ execution of processes.
 #%patch5 -p1
 
 %build
+export CFLAGS="%{optflags} -fno-strict-aliasing -fPIC"
+export CXXFLAGS="%{optflags} -fno-strict-aliasing -fPIC"
+
 %if %snapshot
 ./autogen.sh
 %endif
