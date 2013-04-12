@@ -14,7 +14,7 @@ Source0:	ltrace-%{git}.tar.gz
 Patch5:		ltrace-0.5-testsuite.patch
 ExclusiveArch:	%{ix86} x86_64 ppc x86_64 sparc alpha
 BuildRequires:	elfutils-devel
-%if %svn
+%if %snapshot
 BuildRequires:	autoconf
 %endif
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
