@@ -4,13 +4,14 @@
 Summary:	Track runtime library calls from dynamically linked executables
 Name:		ltrace
 Version:	0.7.2
-Release:	5
+Release:	6
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://ltrace.alioth.debian.org/
 # snapshot from http://anonscm.debian.org/gitweb/?p=collab-maint/ltrace.git
 Source0:	ltrace-%{git}.tar.gz
-ExclusiveArch:	%{ix86} x86_64 ppc x86_64 sparc alpha
+Patch0:		ltrace-0.7.2-gcc48.patch
+ExclusiveArch:	%{ix86} x86_64 ppc x86_64 sparc alpha %{arm}
 BuildRequires:	elfutils-devel
 
 %description
@@ -29,6 +30,7 @@ execution of processes.
 %else
 %setup -q
 %endif
+%apply_patches
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing -fPIC"
