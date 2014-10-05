@@ -12,7 +12,6 @@ Url:		http://ltrace.alioth.debian.org/
 # number changes for each file.  Full list of released files is at:
 #  https://alioth.debian.org/frs/?group_id=30892
 Source0: ltrace-%{version}.tar.bz2
-
 # Merge of several upstream commits that fixes compilation on ARM.
 Patch0: ltrace-0.7.91-arm.patch
 
@@ -51,6 +50,15 @@ Patch10: ltrace-0.7.91-aarch64.patch
 # https://bugzilla.redhat.com/show_bug.cgi?id=1064406
 Patch11: ltrace-0.7.2-e_machine.patch
 
+# Support for ppc64le, backported from upstream.
+# http://anonscm.debian.org/gitweb/?p=collab-maint/ltrace.git;a=commit;h=eea4ad2cce289753aaa35b4e0258a76d8f8f367c
+# https://bugzilla.redhat.com/show_bug.cgi?id=1125601
+Patch13: ltrace-0.7.91-ppc64le-support.patch
+# 35a9677dc9dcb7909ebd28f30200474d7e8b660f,
+# 437d2377119036346f4dbd93039c847b4cc9d0be,
+# eb3993420734f091cde9a6053ca6b4edcf9ae334
+Patch14: ltrace-0.7.91-ppc64le-fixes.patch
+
 
 BuildRequires:	elfutils-devel
 
@@ -87,7 +95,10 @@ rm -fr %{buildroot}%_docdir/%name
 
 %files
 %doc README TODO
-%config(noreplace) %{_sysconfdir}/ltrace.conf
 %{_bindir}/ltrace
 %{_mandir}/man1/ltrace.1*
 %{_mandir}/man5/ltrace.conf.5*
+%{_datadir}/%{name}/libacl.so.conf
+%{_datadir}/%{name}/libc.so.conf
+%{_datadir}/%{name}/libm.so.conf
+%{_datadir}/%{name}/syscalls.conf
