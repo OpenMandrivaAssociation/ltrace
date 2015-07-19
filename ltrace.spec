@@ -4,7 +4,7 @@
 Summary:	Track runtime library calls from dynamically linked executables
 Name:		ltrace
 Version:	0.7.91
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://ltrace.alioth.debian.org/
