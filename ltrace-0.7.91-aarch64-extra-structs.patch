@@ -1,0 +1,22 @@
+diff -up ltrace-0.7.91/sysdeps/linux-gnu/aarch64/arch.h.omv~ ltrace-0.7.91/sysdeps/linux-gnu/aarch64/arch.h
+--- ltrace-0.7.91/sysdeps/linux-gnu/aarch64/arch.h.omv~	2019-08-23 22:45:26.904351388 +0000
++++ ltrace-0.7.91/sysdeps/linux-gnu/aarch64/arch.h	2019-08-23 22:52:21.725211128 +0000
+@@ -34,4 +34,18 @@
+ #define ARCH_HAVE_SIZEOF
+ #define ARCH_HAVE_ALIGNOF
+ 
++struct user_pt_regs {
++        __uint64_t      regs[31];
++        __uint64_t      sp;
++        __uint64_t      pc;
++        __uint64_t      pstate;
++};
++
++struct user_fpsimd_state {
++        __uint128_t     vregs[32];
++        __uint32_t      fpsr;
++        __uint32_t      fpcr;
++        __uint32_t      __reserved[2];
++};
++
+ #endif /* LTRACE_AARCH64_ARCH_H */
