@@ -7,7 +7,7 @@ Version:	0.7.91
 Release:	7
 License:	GPLv2+
 Group:		Development/Other
-Url:		http://ltrace.alioth.debian.org/
+Url:		https://ltrace.alioth.debian.org/
 # Note: this URL needs to be updated for each release, as the file
 # number changes for each file.  Full list of released files is at:
 #  https://alioth.debian.org/frs/?group_id=30892
