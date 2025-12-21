@@ -123,6 +123,11 @@ Patch34: https://src.fedoraproject.org/rpms/ltrace/raw/master/f/ltrace-0.7.91-XD
 
 Patch100: ltrace-0.7.91-aarch64-extra-structs.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	elfutils-devel
 
 %description
