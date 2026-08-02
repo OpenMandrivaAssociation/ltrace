@@ -1,0 +1,23 @@
+Add missing aarch64 user_pt_regs / user_fpsimd_state definitions
+
+--- a/sysdeps/linux-gnu/aarch64/arch.h
++++ b/sysdeps/linux-gnu/aarch64/arch.h
+@@ -34,4 +34,18 @@
+ #define ARCH_HAVE_SIZEOF
+ #define ARCH_HAVE_ALIGNOF
+ 
++struct user_pt_regs {
++	__uint64_t	regs[31];
++	__uint64_t	sp;
++	__uint64_t	pc;
++	__uint64_t	pstate;
++};
++
++struct user_fpsimd_state {
++	__uint128_t	vregs[32];
++	__uint32_t	fpsr;
++	__uint32_t	fpcr;
++	__uint32_t	__reserved[2];
++};
++
+ #endif /* LTRACE_AARCH64_ARCH_H */

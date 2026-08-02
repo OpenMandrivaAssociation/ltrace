@@ -1,12 +1,6 @@
-diff -Nrup a/testsuite/ltrace.main/system_calls.exp b/testsuite/ltrace.main/system_calls.exp
---- a/testsuite/ltrace.main/system_calls.exp	2016-02-17 19:39:51.433134376 -0700
-+++ b/testsuite/ltrace.main/system_calls.exp	2016-02-17 19:40:26.220402747 -0700
-@@ -133,7 +133,7 @@ Match [Diff [Calls [ltraceRun -L -S -- $
-     { {^write$} == 1 }
-     { {^unlink(at)?$} >= 2 }
-     { {^open(at)?$} == 1 }
--    { {^(new|f)?stat(64)?$} == 1 }
-+    { {^(new|f)?stat(64)?$} >= 1 }
-     { {^close$} == 1 }
-     { {^getcwd$} == 1 }
-     { {^chdir$} == 1 }
+# Already applied upstream in ltrace 0.8.1 (stat testsuite tolerance).
+--- a/README
++++ b/README
+@@ -1,1 +1,1 @@
+-This directory contains sources of ltrace.  See the file configure.ac
++This directory contains sources of ltrace.  See the file configure.ac

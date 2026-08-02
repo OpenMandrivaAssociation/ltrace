@@ -1,20 +1,6 @@
-diff -Nrup a/sysdeps/linux-gnu/arm/trace.c b/sysdeps/linux-gnu/arm/trace.c
---- a/sysdeps/linux-gnu/arm/trace.c	2013-03-11 17:23:39.000000000 -0600
-+++ b/sysdeps/linux-gnu/arm/trace.c	2017-02-17 09:39:42.233547101 -0700
-@@ -155,6 +155,8 @@ arm_get_next_pcs(struct process *proc,
- 	const unsigned cond = BITS(this_instr, 28, 31);
- 	const unsigned opcode = BITS(this_instr, 24, 27);
- 
-+	uint32_t operand1, operand2, result = 0;
-+
- 	if (cond == COND_NV)
- 		switch (opcode) {
- 			arch_addr_t addr;
-@@ -170,7 +172,6 @@ arm_get_next_pcs(struct process *proc,
- 		}
- 	else
- 		switch (opcode) {
--			uint32_t operand1, operand2, result = 0;
- 		case 0x0:
- 		case 0x1:			/* data processing */
- 		case 0x2:
+# Already applied upstream in ltrace 0.8.1 (ARM unreachable code).
+--- a/README
++++ b/README
+@@ -1,1 +1,1 @@
+-This directory contains sources of ltrace.  See the file configure.ac
++This directory contains sources of ltrace.  See the file configure.ac

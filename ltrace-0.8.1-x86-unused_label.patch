@@ -1,4 +1,4 @@
-# Already applied upstream in ltrace 0.8.1 (aarch64 ifunc testsuite skip).
+# Already applied upstream in ltrace 0.8.1 (x86 unused label).
 --- a/README
 +++ b/README
 @@ -1,1 +1,1 @@
